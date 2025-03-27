@@ -9,6 +9,7 @@
   "fmt": {
     "lineWidth": 100
   },
+  "exclude": ["test/assets/**/*.js"],
   "exports": {
     "./esbuild": "./src/esbuild.ts",
     "./rolldown": "./src/rolldown.ts",

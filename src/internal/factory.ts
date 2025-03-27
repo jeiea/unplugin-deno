@@ -1,4 +1,4 @@
-import type { UnpluginFactory } from "npm:unplugin";
+import type { UnpluginFactory } from "npm:unplugin@^2";
 import { DenoLoaderPlugin } from "./deno_loader.ts";
 
 export type Options = object | undefined;

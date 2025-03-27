@@ -1,4 +1,6 @@
-import { createEsbuildPlugin } from "npm:unplugin";
-import { unpluginFactory } from "./internal/factory.ts";
+import { createEsbuildPlugin, type UnpluginInstance } from "npm:unplugin@^2";
+import { type Options, unpluginFactory } from "./internal/factory.ts";
 
-export default createEsbuildPlugin(unpluginFactory);
+const esbuildPlugin: UnpluginInstance<Options>["esbuild"] = createEsbuildPlugin(unpluginFactory);
+
+export default esbuildPlugin;

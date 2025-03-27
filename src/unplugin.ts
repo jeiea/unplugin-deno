@@ -1,4 +1,6 @@
-import { createUnplugin } from "npm:unplugin";
-import { unpluginFactory } from "./internal/factory.ts";
+import { createUnplugin, type UnpluginInstance } from "npm:unplugin@^2";
+import { type Options, unpluginFactory } from "./internal/factory.ts";
 
-export default createUnplugin(unpluginFactory);
+const unplugin: UnpluginInstance<Options> = createUnplugin(unpluginFactory);
+
+export default unplugin;

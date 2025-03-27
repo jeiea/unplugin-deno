@@ -1,4 +1,4 @@
-import { fromFileUrl, toFileUrl } from "jsr:@std/path";
+import { fromFileUrl, toFileUrl } from "jsr:@std/path@^1";
 
 type DenoMediaType =
   | "JavaScript"

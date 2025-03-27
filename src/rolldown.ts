@@ -1,4 +1,6 @@
-import { createRolldownPlugin } from "npm:unplugin";
-import { unpluginFactory } from "./internal/factory.ts";
+import { createRolldownPlugin, type UnpluginInstance } from "npm:unplugin@^2";
+import { type Options, unpluginFactory } from "./internal/factory.ts";
 
-export default createRolldownPlugin(unpluginFactory);
+const rolldownPlugin: UnpluginInstance<Options>["rolldown"] = createRolldownPlugin(unpluginFactory);
+
+export default rolldownPlugin;
