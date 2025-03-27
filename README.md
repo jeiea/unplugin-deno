@@ -3,15 +3,16 @@
 deno unplugin. Simplified version of
 [@bureaudouble/rolldown-deno-loader-plugin](https://jsr.io/@bureaudouble/rolldown-deno-loader-plugin).
 
-## Rolldown usage
+## Usage
 
 ```ts
 // rolldown.config.mts
+import { defineConfig } from "npm:rolldown";
 import denoPlugin from "jsr:@jeiea/unplugin-deno/rolldown";
 
-export default {
+export default defineConfig({
   plugins: [denoPlugin()],
-};
+});
 ```
 
 ## Comments
