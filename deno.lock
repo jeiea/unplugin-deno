@@ -5,8 +5,10 @@
     "jsr:@std/expect@*": "1.0.14",
     "jsr:@std/internal@^1.0.6": "1.0.6",
     "jsr:@std/path@*": "1.0.8",
+    "jsr:@std/path@1": "1.0.8",
     "npm:rolldown@*": "1.0.0-beta.6_valibot@1.0.0-rc.4",
-    "npm:unplugin@*": "2.2.2"
+    "npm:unplugin@*": "2.2.2",
+    "npm:unplugin@2": "2.2.2"
   },
   "jsr": {
     "@std/assert@1.0.12": {
