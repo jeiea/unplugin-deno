@@ -1,7 +1,7 @@
 import type { UnpluginFactory } from "npm:unplugin";
 import { DenoLoaderPlugin } from "./deno_loader.ts";
 
-type Options = object;
+export type Options = object | undefined;
 
 export const unpluginFactory: UnpluginFactory<Options> = () => {
   const loader = new DenoLoaderPlugin();

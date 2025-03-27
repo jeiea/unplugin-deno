@@ -1,4 +1,4 @@
-import { toFileUrl } from "jsr:@std/path/to-file-url";
+import { fromFileUrl, toFileUrl } from "jsr:@std/path";
 
 type DenoMediaType =
   | "JavaScript"
@@ -69,10 +69,9 @@ export class DenoLoaderPlugin {
     let id = specifier;
     if (specifier.startsWith(".") || specifier.startsWith("/")) {
       if (importer) {
-        const base_url = new URL(
-          URL.canParse(importer) ? importer : toFileUrl(importer),
-        );
-        id = new URL(specifier, base_url).toString();
+        const isUrl = URL.canParse(importer) && !importer.includes("\\");
+        const baseUrl = new URL(isUrl ? importer : toFileUrl(importer));
+        id = new URL(specifier, baseUrl).toString();
       }
     }
 
@@ -88,8 +87,7 @@ export class DenoLoaderPlugin {
       return { id: maybeResolved, external: true };
     }
     if (maybeResolved.startsWith("file:")) {
-      const final_id = new URL(maybeResolved).pathname;
-      return { id: final_id, external: false };
+      return { id: fromFileUrl(maybeResolved), external: false };
     }
     if (maybeResolved.startsWith("jsr:")) {
       const cached = await this.#denoResolve(maybeResolved);
@@ -177,9 +175,13 @@ export class DenoLoaderPlugin {
 
     if (!importer) return id;
 
-    const value = `${new URL(id, URL.canParse(importer) ? importer : toFileUrl(importer))}`;
-    this.#resolveModuleSpecifierCache.set(key, value);
-    return value;
+    try {
+      const value = `${new URL(id, URL.canParse(importer) ? importer : toFileUrl(importer))}`;
+      this.#resolveModuleSpecifierCache.set(key, value);
+      return value;
+    } catch {
+      return id;
+    }
   }
 }
 
